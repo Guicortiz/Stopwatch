@@ -8,12 +8,18 @@ namespace Stopwatch
         static void Main(string[] args)
         {
             Console.Clear();
-            Start();
+            Start(6);
         }
-
-        static void Start()
+        static void Menu()
         {
-            int time = 10;
+            Console.Clear();
+            Console.WriteLine("P - Pomodore");
+            Console.WriteLine("C - Chronometer");
+            Console.WriteLine("------------");
+            Console.WriteLine("E - Exit");
+        }
+        static void Start(int time)
+        {
             int currentTime = 0;
             while (currentTime < time)
             {
@@ -22,6 +28,9 @@ namespace Stopwatch
                 Console.WriteLine(currentTime);
                 Thread.Sleep(1000);
             }
+            Console.Clear();
+            Console.WriteLine("Stopwatch finished");
+            Thread.Sleep(2500);
         }
     }
 }
