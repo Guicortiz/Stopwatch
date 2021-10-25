@@ -25,6 +25,7 @@ namespace Stopwatch
                     Pomodore();
                     break;
                 case "C":
+                    Chronometer();
                     break;
                 case "E":
                     System.Environment.Exit(0);
@@ -42,11 +43,36 @@ namespace Stopwatch
             Start(minutes, false);
         }
 
+        static void Chronometer()
+        {
+            Console.WriteLine("Starting Chronometer...");
+            Start(0, true);
+        }
+
         static void Start(int minutes, Boolean ascending)
         {
             if (ascending == true)
             {
-                // notmake
+                int seconds = 0;
+                bool descending = true;
+                while (descending == true)
+                {
+
+                    Console.Clear();
+                    Console.WriteLine(TimeCurrent(minutes, seconds));
+                    if (seconds == 59)
+                    {
+                        minutes++;
+                        seconds = -1;
+                    }
+                    seconds++;
+
+
+                    Thread.Sleep(1000);
+                }
+                Console.Clear();
+                Console.WriteLine("Stopwatch finished");
+                Thread.Sleep(2500);
             }
             else
             {
@@ -68,8 +94,9 @@ namespace Stopwatch
                     Thread.Sleep(1000);
                 }
                 Console.Clear();
-                Console.WriteLine("Stopwatch finished");
+                Console.WriteLine("Pomodore finished");
                 Thread.Sleep(2500);
+                Menu();
             }
 
         }
