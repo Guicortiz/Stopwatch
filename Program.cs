@@ -8,7 +8,7 @@ namespace Stopwatch
         static void Main(string[] args)
         {
             Console.Clear();
-            Start(6);
+            Menu();
         }
         static void Menu()
         {
@@ -17,20 +17,72 @@ namespace Stopwatch
             Console.WriteLine("C - Chronometer");
             Console.WriteLine("------------");
             Console.WriteLine("E - Exit");
-        }
-        static void Start(int time)
-        {
-            int currentTime = 0;
-            while (currentTime < time)
+
+            string option = Console.ReadLine().ToUpper();
+            switch (option)
             {
-                Console.Clear();
-                currentTime++;
-                Console.WriteLine(currentTime);
-                Thread.Sleep(1000);
+                case "P":
+                    Pomodore();
+                    break;
+                case "C":
+                    break;
+                case "E":
+                    System.Environment.Exit(0);
+                    break;
+                default:
+                    Menu();
+                    break;
             }
-            Console.Clear();
-            Console.WriteLine("Stopwatch finished");
-            Thread.Sleep(2500);
+
+        }
+        static void Pomodore()
+        {
+            Console.WriteLine("Type minutes do you want be focused?");
+            int minutes = int.Parse(Console.ReadLine());
+            Start(minutes, false);
+        }
+
+        static void Start(int minutes, Boolean ascending)
+        {
+            if (ascending == true)
+            {
+                // notmake
+            }
+            else
+            {
+                int time = minutes * 60;
+                int seconds = 0;
+                while (time > 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine(TimeCurrent(minutes, seconds));
+                    time--;
+                    if (seconds == 0)
+                    {
+                        minutes--;
+                        seconds = 60;
+                    }
+                    seconds--;
+
+
+                    Thread.Sleep(1000);
+                }
+                Console.Clear();
+                Console.WriteLine("Stopwatch finished");
+                Thread.Sleep(2500);
+            }
+
+        }
+        static string TimeCurrent(int minutes, int seconds)
+        {
+            if (minutes < 10 && seconds < 10)
+                return $"0{minutes}:0{seconds}";
+            else if (minutes < 10)
+                return $"0{minutes}:{seconds}";
+            else if (seconds < 10)
+                return $"{minutes}:0{seconds}";
+            else
+                return $"{minutes}:{seconds}";
         }
     }
 }
