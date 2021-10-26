@@ -54,8 +54,7 @@ namespace Stopwatch
             if (ascending == true)
             {
                 int seconds = 0;
-                bool descending = true;
-                while (descending == true)
+                while (ascending)
                 {
 
                     Console.Clear();
@@ -70,9 +69,7 @@ namespace Stopwatch
 
                     Thread.Sleep(1000);
                 }
-                Console.Clear();
-                Console.WriteLine("Stopwatch finished");
-                Thread.Sleep(2500);
+
             }
             else
             {
