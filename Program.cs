@@ -69,7 +69,6 @@ namespace Stopwatch
 
                     Thread.Sleep(1000);
                 }
-
             }
             else
             {
